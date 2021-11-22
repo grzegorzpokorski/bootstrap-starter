@@ -7,6 +7,10 @@ const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack-stream');
 const babel = require('gulp-babel');
 const mode = require('gulp-mode')();
+const imageResize = require('gulp-image-resize');
+const imagemin = require('gulp-imagemin');
+const rename = require('gulp-rename');
+const webp = require('gulp-webp');
 
 gulp.task('process-sass', () => {
 	return gulp.src('src/scss/style.scss')
@@ -16,7 +20,7 @@ gulp.task('process-sass', () => {
 			overrideBrowserslist: ['> 1%']
 		}))
 		.pipe(cssnano())
-		.pipe(mode.development(sourcemaps.write()))
+		.pipe(mode.development(sourcemaps.write('./')))
 		.pipe(gulp.dest('dist/css'));
 });
 
@@ -35,8 +39,42 @@ gulp.task('process-js', () => {
 			console.error(uglify.message);
 			this.emit('end');
 		}))
-		.pipe(mode.development(sourcemaps.write()))
+		.pipe(mode.development(sourcemaps.write('./')))
 		.pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('fontawesome', () => {
+	return gulp.src(['./node_modules/@fortawesome/fontawesome-free/webfonts/*'])
+		.pipe(gulp.dest('dist/fonts/fontawesome'));
+});
+
+gulp.task('fontmanrope', () => {
+	return gulp.src(['./node_modules/manrope/complete/*'])
+		.pipe(gulp.dest('dist/fonts/manrope'));
+});
+
+gulp.task('fonts', gulp.series(['fontawesome', 'fontmanrope']));
+
+gulp.task('images', () => {
+	let sizes = [1900, 1200, 992, 768];
+	let stream;
+
+	sizes.forEach(size => {
+		stream = gulp.src('./src/img/**/*')
+			.pipe(imageResize({
+				width : size,
+				upscale : false,
+				imageMagick: true
+			}))
+			.pipe(webp())
+			.pipe(imagemin())
+			.pipe(rename({
+				suffix: "-" + size + 'w',
+			}))
+			.pipe(gulp.dest('dist/img'));
+	});
+
+	return stream;
 });
 
 gulp.task('default', () => {
