@@ -48,12 +48,12 @@ gulp.task('fontawesome', () => {
 		.pipe(gulp.dest('dist/fonts/fontawesome'));
 });
 
-gulp.task('fontmanrope', () => {
+gulp.task('main-font', () => {
 	return gulp.src(['./node_modules/manrope/complete/*'])
 		.pipe(gulp.dest('dist/fonts/manrope'));
 });
 
-gulp.task('fonts', gulp.series(['fontawesome', 'fontmanrope']));
+gulp.task('fonts', gulp.series(['fontawesome', 'main-font']));
 
 gulp.task('images', () => {
 	let sizes = [1900, 1200, 992, 768];
