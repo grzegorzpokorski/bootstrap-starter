@@ -4,96 +4,106 @@
 
 // colors
 
-$primary: #ff4b33;
-$secondary: #1a1a1a;
-
-$gray: #333333;
-$gray-lighter: #555555;
-
+$green: #78bd26;
+$gray: #222222;
+$gray-light: #757575;
 $white: #ffffff;
-$white-darker: #eeeeee;
-
+$white-dark: #f9f9f9;
+$white-green: #e4f2d4;
 $black: #000000;
 
 $theme-colors:();
 $theme-colors:(
-	'primary': $primary,
-	'secondary': $secondary,
+	'green': $green,
 	'gray': $gray,
-	'gray-lighter': $gray-lighter,
+	'gray-light': $gray-light,
 	'white': $white,
-	'white-darker': $white-darker,
+	'white-dark': $white-dark,
+	'white-green': $white-green,
+	'black': $black,
 );
+
+$colors:();
 
 // Options
 
-$enable-caret: true;
-$enable-rounded: false;
-$enable-shadows: false;
-$enable-gradients: false;
-$enable-transitions: true;
-$enable-hover-media-query: false; // Deprecated, no longer affects any compiled CSS
-$enable-grid-classes: true;
-$enable-print-styles: true;
-$enable-validation-icons: false;
- $enable-negative-margins: true;
+// $enable-caret: true;
+// $enable-rounded: false;
+// $enable-shadows: false;
+// $enable-gradients: false;
+// $enable-transitions: true;
+// $enable-hover-media-query: false; // Deprecated, no longer affects any compiled CSS
+// $enable-grid-classes: true;
+// $enable-print-styles: true;
+// $enable-validation-icons: false;
+// $enable-negative-margins: true;
 
 // Body
 
-$body-bg: $white;
-$body-color: $secondary;
+$body-bg: $white-dark;
+$body-color: $gray-light;
 
 // Links
 
-$link-color: $body-color;
+$link-color: $green;
 $link-decoration: none;
-$link-hover-color: $link-color;
+$link-hover-color: darken($green, 5%);
 $link-hover-decoration: underline;
 
 // fonts
 
-$font-family-sans-serif: 'Manrope', Arial, sans-serif;
+$font-family-sans-serif: 'Rubik', Arial, sans-serif;
 $font-family-base: $font-family-sans-serif;
 
 $font-weight-normal: 400;
-$font-weight-medium: 500;
 $font-weight-bold: 700;
 
-$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$line-height-base: 1.5;
+
+$font-size-base: 1rem;
+
 $font-size-lg: ($font-size-base * 1.25);
 $font-size-sm: ($font-size-base * 0.875);
 
-$h1-font-size: $font-size-base * 2.8;
-$h2-font-size: $font-size-base * 2.4;
+$h1-font-size: $font-size-base * 3;
+$h2-font-size: $font-size-base * 2.5;
 $h3-font-size: $font-size-base * 1.5;
-$h4-font-size: $font-size-base * 1.25;
+$h4-font-size: $font-size-base * 1.17;
 $h5-font-size: $font-size-base * 1;
-$h6-font-size: $font-size-base;
+$h6-font-size: $font-size-base * 1;
 
-$headings-font-weight: 700;
-$headings-line-height: 1.25;
+$headings-font-weight: $font-weight-bold;
+$headings-line-height: 1.33;
+
+$headings-margin-bottom:      .5em;
+$headings-font-family:        null;
+$headings-font-style:         null;
+$headings-font-weight:        $font-weight-bold;
+$headings-line-height:        1.33;
+$headings-color:              $gray;
 
 // Buttons + Forms
 
 $input-btn-font-size: $font-size-base;
+
 $input-btn-font-size-sm: $input-btn-font-size * .8;
 $input-btn-font-size-lg: $input-btn-font-size * 1.2;
 
 $input-btn-padding-y: 1em;
 $input-btn-padding-x: 1.5em;
 
-$input-btn-padding-y-sm: $input-btn-padding-y;
-$input-btn-padding-x-sm: $input-btn-padding-x;
+$input-btn-padding-y-sm: $input-btn-padding-y * .4;
+$input-btn-padding-x-sm: $input-btn-padding-x * .8;
 
 $input-btn-padding-y-lg: $input-btn-padding-y;
 $input-btn-padding-x-lg: $input-btn-padding-x;
 
 // Buttons
 
-$btn-font-size: $input-btn-font-size;
+$btn-font-size: $input-btn-font-size * 0.9;
 
-$btn-padding-y: $input-btn-padding-y;
-$btn-padding-x: $input-btn-padding-x;
+$btn-padding-y: .75em;
+$btn-padding-x: 2.5em;
 
 $btn-padding-y-sm: $input-btn-padding-y-sm;
 $btn-padding-x-sm: $input-btn-padding-x-sm;
@@ -101,7 +111,7 @@ $btn-padding-x-sm: $input-btn-padding-x-sm;
 $btn-padding-y-lg: $input-btn-padding-y-lg;
 $btn-padding-x-lg: $input-btn-padding-x-lg;
 
-$btn-font-weight: $font-weight-medium;
+$btn-font-weight: $font-weight-normal;
 $btn-box-shadow: inset 0 1px 0 rgba($white, 0.15), 0 1px 1px rgba($black, 0.075);
 
 $btn-border-radius: 0;
@@ -123,7 +133,7 @@ $spacers: (
 	3: $spacer * 3,
 	4: $spacer * 4,
 	5: $spacer * 5,
-	75: $spacer * 7.5, 
+	7: $spacer * 7,
 	10: $spacer * 10,
 ) !default;
 
