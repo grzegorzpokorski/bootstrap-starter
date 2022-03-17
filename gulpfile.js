@@ -49,8 +49,8 @@ gulp.task('fontawesome', () => {
 });
 
 gulp.task('main-font', () => {
-	return gulp.src(['./node_modules/manrope/complete/*'])
-		.pipe(gulp.dest('dist/fonts/manrope'));
+	return gulp.src(['./node_modules/@fontsource/rubik/files/*'])
+		.pipe(gulp.dest('dist/fonts/rubik'));
 });
 
 gulp.task('fonts', gulp.series(['fontawesome', 'main-font']));
